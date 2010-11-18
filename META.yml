@@ -26,8 +26,9 @@ recommends:
   Test::Pod: 1.22
   Test::Pod::Coverage: 1.08
 requires:
+  Sys::Syslog: 0
   perl: 5.8.0
   version: 0
 resources:
   license: http://opensource.org/licenses/mit-license.php
-version: 1.000001
+version: 1.000002

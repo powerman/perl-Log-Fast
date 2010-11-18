@@ -1,5 +1,10 @@
 Revision history for Log-Fast
 
+1.0.2	Thu Nov 18 21:38:24 EET 2010
+	use Sys::Syslog::_PATH_LOG() for default {path}
+	fixed t/raise.t on platforms without /dev/log
+	fixed t/syslog.t on Win
+
 1.0.1	Thu Nov 18 07:46:54 EET 2010
 	require perl 5.8
 	added t/syslog.t

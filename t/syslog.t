@@ -6,7 +6,11 @@ use Socket;
 use Log::Fast;
 
 
-plan tests => 16;
+if ($^O =~ /Win/xms) {
+    plan skip_all => 'not availaible on Windows';
+} else {
+    plan tests => 16;
+}
 
 
 use constant PATH => "/tmp/log.$$.sock";

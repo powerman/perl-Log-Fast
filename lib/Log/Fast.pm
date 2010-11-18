@@ -32,13 +32,14 @@ use strict;
 use Carp;
 
 use 5.008;
-use version; our $VERSION = qv('1.0.1');    # REMINDER: update Changes
+use version; our $VERSION = qv('1.0.2');    # REMINDER: update Changes
 
 # REMINDER: update dependencies in Makefile.PL
 use Scalar::Util qw( refaddr );
 use Socket;
 use Sys::Hostname ();
 use Time::HiRes ();
+use Sys::Syslog (); # for _PATH_LOG()
 
 
 # from RFC3164
@@ -63,7 +64,7 @@ use constant DEFAULTS => {
     # used only when {type}='fh':
     fh              => \*STDERR,
     # used only when {type}='unix':
-    path            => '/dev/log',
+    path            => Sys::Syslog::_PATH_LOG() || '/dev/log', ## no critic(ProtectPrivateSubs)
     facility        => LOG_USER,
     add_timestamp   => 1,
     add_hostname    => 0,
@@ -528,7 +529,7 @@ Defaults for all options are:
     fh              => \*STDERR,
 
     # these will be used if you will call config({ type=>'unix' })
-    path            => '/dev/log',
+    path            => Sys::Syslog::_PATH_LOG() || '/dev/log',
     facility        => LOG_USER,
     add_timestamp   => 1,
     add_hostname    => 0,
