@@ -27,4 +27,5 @@ t/pod-coverage.t
 t/pod.t
 t/prefix.t
 t/raise.t
+t/syslog.t
 t/unicode.t

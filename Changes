@@ -1,5 +1,9 @@
 Revision history for Log-Fast
 
+1.0.1	Thu Nov 18 07:46:54 EET 2010
+	require perl 5.8
+	added t/syslog.t
+
 1.0.0	Wed Nov 17 22:36:01 EET 2010
 	Initial release.
 

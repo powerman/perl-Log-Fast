@@ -31,7 +31,8 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('1.0.0');    # REMINDER: update Changes
+use 5.008;
+use version; our $VERSION = qv('1.0.1');    # REMINDER: update Changes
 
 # REMINDER: update dependencies in Makefile.PL
 use Scalar::Util qw( refaddr );

@@ -6,6 +6,7 @@ all_from 'lib/Log/Fast.pm';
 requires        'version';
 
 test_requires   'Test::More';
+test_requires   'Test::Exception';
 
 recommends      'Test::CheckManifest'   => '0.9';
 recommends      'Test::Perl::Critic';
