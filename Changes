@@ -1,5 +1,9 @@
 Revision history for Log-Fast
 
+1.0.3	Fri Dec 03 14:39:54 EET 2010
+	fixed t/raise.t on platforms without AF_UNIX
+	fixed t/syslog.t for mday < 10
+
 1.0.2	Thu Nov 18 21:38:24 EET 2010
 	use Sys::Syslog::_PATH_LOG() for default {path}
 	fixed t/raise.t on platforms without /dev/log

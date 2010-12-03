@@ -28,7 +28,16 @@ throws_ok { $LOG->level('InFo')             } qr/{level}/;
 lives_ok  { $LOG->level('INFO')             };
 
 SKIP: {
-    skip 'no UNIX sockets on Windows', 2 if $^O =~ /Win/;
+    eval {
+        use File::Temp qw( tempfile );
+        use Socket;
+        (undef, my $tempfile) = tempfile();
+        unlink $tempfile;
+        socket my $sock, AF_UNIX, SOCK_DGRAM, 0 or die "socket: $!";
+        connect $sock, sockaddr_un($tempfile) or die "connect: $!";
+        unlink $tempfile;
+    };
+    skip 'no UNIX sockets available', 2 if $@;
     SKIP: {
         use Sys::Syslog ();
         my $path = Sys::Syslog::_PATH_LOG() || '/dev/log';

@@ -8,7 +8,8 @@ severity = 1
 # pager = 
 # top = 0
 # verbose = 4
-verbose = 11
+#verbose = 11
+verbose = 2
 # include = 
 # exclude = 
 # single-policy = 
@@ -227,7 +228,7 @@ severity                           = 3
 
 
 # Write `for(0..20)' instead of `for($i=0; $i<=20; $i++)'.
-[ControlStructures::ProhibitCStyleForLoops]
+[-ControlStructures::ProhibitCStyleForLoops]
 # set_themes                         = core maintenance pbp
 # add_themes                         =
 # severity                           = 2

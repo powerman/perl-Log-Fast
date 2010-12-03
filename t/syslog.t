@@ -25,7 +25,7 @@ our $LOG = Log::Fast->new({
     path    => PATH,
 });
 
-my $H = qr/\A<11>\w\w\w \d\d \d\d:\d\d:\d\d syslog\.t\[$$\]:/ms;
+my $H = qr/\A<11>\w\w\w [ \d]\d \d\d:\d\d:\d\d syslog\.t\[$$\]:/ms;
 
 
 $LOG->ERR('msg');
@@ -68,7 +68,7 @@ $LOG->ERR('msg');
 like _log, qr/$H msg\z/ms,          'facilities: user';
 
 $LOG->config({ add_timestamp => 1 });
-$H = qr/\A<11>\w\w\w \d\d \d\d:\d\d:\d\d syslog\.t:/ms;
+$H = qr/\A<11>\w\w\w [ \d]\d \d\d:\d\d:\d\d syslog\.t:/ms;
 $LOG->ERR('msg');
 like _log, qr/$H msg\z/ms,          'feature: timestamp';
 $LOG->config({ add_timestamp => 0 });
@@ -109,7 +109,7 @@ $LOG->config({
     add_pid         => 1,
     pid             => 65535,
 });
-$H = qr/\A<31>\w\w\w \d\d \d\d:\d\d:\d\d somehost тест\[65535\]:/ms;
+$H = qr/\A<31>\w\w\w [ \d]\d \d\d:\d\d:\d\d somehost тест\[65535\]:/ms;
 my $P = qr/\d+\.\d{5} 20\d\d-\d\d-\d\d \d\d:\d\d:\d\d \[DEBUG\] main-> %/ms;
 $LOG->DEBUG('сообщение');
 my $msg = _log;
