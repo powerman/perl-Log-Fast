@@ -1,5 +1,8 @@
 Revision history for Log-Fast
 
+1.0.4	Sun May 13 06:01:33 EEST 2012
+	Fix requirements.
+
 1.0.3	Fri Dec 03 14:39:54 EET 2010
 	fixed t/raise.t on platforms without AF_UNIX
 	fixed t/syslog.t for mday < 10

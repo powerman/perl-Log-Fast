@@ -4,7 +4,7 @@ name     'Log-Fast';
 all_from 'lib/Log/Fast.pm';
 
 requires        'version';
-requires        'Sys::Syslog';
+requires        'Sys::Syslog'           => '0.29';
 
 test_requires   'Test::More';
 test_requires   'Test::Exception';

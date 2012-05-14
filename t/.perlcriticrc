@@ -332,6 +332,10 @@ severity                           = 4
 # maximum_violations_per_document    = no_limit
 
 
+[-Documentation::PodSpelling]
+spell_command = aspell list -l en
+
+
 # The `=head1 NAME' section should match the package.
 [Documentation::RequirePackageMatchesPodName]
 # set_themes                         = core cosmetic
@@ -1086,6 +1090,9 @@ severity                           = 2
 # add_themes                         =
 # severity                           = 3
 # maximum_violations_per_document    = no_limit
+
+
+[-ValuesAndExpressions::RequireConstantVersion]
 
 
 # Warns that you might have used single quotes when you really wanted double-quotes.
