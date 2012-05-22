@@ -1,5 +1,9 @@
 Revision history for Log-Fast
 
+1.0.5	Tue May 22 04:50:09 EEST 2012
+	INCOMPATIBLE! fixed: level() and ident() now return
+	previous value instead of current.
+
 1.0.4	Sun May 13 06:01:33 EEST 2012
 	Fix requirements.
 

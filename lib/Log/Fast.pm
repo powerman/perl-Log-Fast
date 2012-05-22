@@ -32,7 +32,7 @@ use strict;
 use Carp;
 
 use 5.008;
-use version; our $VERSION = qv('1.0.4');    # REMINDER: update Changes
+use version; our $VERSION = qv('1.0.5');    # REMINDER: update Changes
 
 # REMINDER: update dependencies in Makefile.PL
 use Scalar::Util qw( refaddr );
@@ -136,6 +136,7 @@ sub config {
 
 sub level {
     my ($self, $level) = @_;
+    my $prev_level = $self->{level};
     if (defined $level) {
         if (!exists PRI->{$level}) {
             croak '{level} must be one of: '.join ', ', keys %{ PRI() };
@@ -143,16 +144,17 @@ sub level {
         $self->{level} = $level;
         $self->_setup_level();
     }
-    return $self->{level};
+    return $prev_level;
 }
 
 sub ident {
     my ($self, $ident) = @_;
+    my $prev_ident = $self->{ident};
     if (defined $ident) {
         $self->{ident} = $ident;
         $self->_update_header();
     }
-    return $self->{ident};
+    return $prev_ident;
 }
 
 ### Internal
@@ -467,7 +469,7 @@ Return nothing. Throw exception if unable to connect to syslog.
 If B<$level> given will change current log level.
 This is same as call C<< config({ level=>$level }) >> but much faster.
 
-Return current log level.
+Return previous log level.
 
 
 =item $LOG->ident( [$ident] )
@@ -475,7 +477,7 @@ Return current log level.
 If B<$ident> given will change current syslog's ident.
 This is same as call C<< config({ ident=>$ident }) >> but much faster.
 
-Return current syslog's ident.
+Return previous syslog's ident.
 
 
 =item $LOG->ERR( $message )
@@ -695,7 +697,7 @@ Alex Efros  C<< <powerman-asdf@ya.ru> >>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Alex Efros <powerman-asdf@ya.ru>.
+Copyright 2010,2012 Alex Efros <powerman-asdf@ya.ru>.
 
 This program is distributed under the MIT (X11) License:
 L<http://www.opensource.org/licenses/mit-license.php>

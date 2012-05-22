@@ -5,7 +5,7 @@ use Test::More;
 use Log::Fast;
 
 
-plan tests => 8;
+plan tests => 9;
 
 
 my $LOG = Log::Fast->new();
@@ -47,3 +47,4 @@ $LOG->level('DEBUG');
 logall();
 is _log(), "E\nW\nN\nI\nD\n", 'DEBUG';
 
+is $LOG->level('INFO'), 'DEBUG',    'previous level on change';

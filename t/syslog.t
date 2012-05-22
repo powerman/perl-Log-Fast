@@ -9,7 +9,7 @@ use Log::Fast;
 if ($^O =~ /Win/xms) {
     plan skip_all => 'not availaible on Windows';
 } else {
-    plan tests => 16;
+    plan tests => 19;
 }
 
 
@@ -88,6 +88,10 @@ $LOG->ident('myapp');
 $H = qr/\A<11>myapp:/ms;
 $LOG->ERR('msg');
 like _log, qr/$H msg\z/ms,          'ident';
+
+is $LOG->ident(), 'myapp',          'current ident without change';
+is $LOG->ident('myapp2'), 'myapp',  'previous ident on change';
+is $LOG->ident('myapp'), 'myapp2',  'previous ident on change';
 
 $LOG->config({ add_pid => 1 });
 $H = qr/\A<11>myapp\[$$\]:/ms;

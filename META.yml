@@ -32,4 +32,4 @@ requires:
   version: 0
 resources:
   license: http://opensource.org/licenses/mit-license.php
-version: 1.000004
+version: 1.000005
