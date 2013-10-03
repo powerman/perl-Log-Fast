@@ -1,5 +1,8 @@
 Revision history for Log-Fast
 
+1.0.6   Thu Oct  3 17:06:57 EEST 2013
+	Remove MYMETA.*
+
 1.0.5	Tue May 22 04:50:09 EEST 2012
 	INCOMPATIBLE! fixed: level() and ident() now return
 	previous value instead of current.

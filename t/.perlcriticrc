@@ -539,17 +539,6 @@ severity                           = 4
 [-Miscellanea::ProhibitUnrestrictedNoCritic]
 
 
-# Put source-control keywords in every file.
-[-Miscellanea::RequireRcsKeywords]
-# set_themes                         = core cosmetic pbp
-# add_themes                         =
-# severity                           = 2
-# maximum_violations_per_document    = no_limit
-
-# The keywords to require in all files.
-# keywords = 
-
-
 # Export symbols via `@EXPORT_OK' or `%EXPORT_TAGS' instead of `@EXPORT'.
 [Modules::ProhibitAutomaticExportation]
 # set_themes                         = bugs core
@@ -756,7 +745,7 @@ severity                           = 4
 
 
 # Always use the `/x' modifier with regular expressions.
-[RegularExpressions::RequireExtendedFormatting]
+[-RegularExpressions::RequireExtendedFormatting]
 # set_themes                         = core maintenance pbp
 # add_themes                         =
 # severity                           = 3
@@ -1193,6 +1182,10 @@ add_packages = Exporter
 # The additional variables to allow.
 # Values that are always included: $1, $2, $3, $4, $5, $6, $7, $8, $9, $_, @_, _.
 # allow = 
+
+
+[Variables::ProhibitReusedNames]
+allow = $this $self $c
 
 
 # Don't ask for storage you don't need.

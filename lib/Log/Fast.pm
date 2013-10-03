@@ -32,7 +32,7 @@ use strict;
 use Carp;
 
 use 5.008;
-use version; our $VERSION = qv('1.0.5');    # REMINDER: update Changes
+use version; our $VERSION = qv('1.0.6');    # REMINDER: update Changes
 
 # REMINDER: update dependencies in Makefile.PL
 use Scalar::Util qw( refaddr );
