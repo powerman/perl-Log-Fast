@@ -1,6 +1,8 @@
 Revision history for Log-Fast
 
 {{$NEXT}}
+
+v2.0.0  2016-02-17 22:34:31 EET
 	- Switch to Dist::Milla.
 
 1.0.6   2013-10-03 17:06:57 EEST

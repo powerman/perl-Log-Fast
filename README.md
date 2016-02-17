@@ -7,7 +7,7 @@ Log::Fast - Fast and flexible logger
 
 # VERSION
 
-This document describes Log::Fast version v1.0.6
+This document describes Log::Fast version v2.0.0
 
 # SYNOPSIS
 

@@ -57,7 +57,7 @@
    "provides" : {
       "Log::Fast" : {
          "file" : "lib/Log/Fast.pm",
-         "version" : "v1.0.6"
+         "version" : "v2.0.0"
       }
    },
    "release_status" : "stable",
@@ -72,6 +72,6 @@
          "web" : "https://github.com/powerman/perl-Log-Fast"
       }
    },
-   "version" : "v1.0.6"
+   "version" : "v2.0.0"
 }
 
