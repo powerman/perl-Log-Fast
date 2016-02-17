@@ -26,15 +26,14 @@
 # * if log-methods will be called with single param sprintf() won't be used
 
 package Log::Fast;
-
+use 5.010001;
 use warnings;
 use strict;
+use utf8;
 use Carp;
 
-use 5.008;
-use version; our $VERSION = qv('1.0.6');    # REMINDER: update Changes
+our $VERSION = 'v1.0.6';
 
-# REMINDER: update dependencies in Makefile.PL
 use Scalar::Util qw( refaddr );
 use Socket;
 use Sys::Hostname ();
@@ -102,7 +101,7 @@ sub new {
     }
     bless $self, $sub_class;
 
-    $self->config({ %{ DEFAULTS() }, %{ $opt } });  ## no critic
+    $self->config({ %{ DEFAULTS() }, %{ $opt } });  ## no critic (ProhibitCommaSeparatedStatements)
 
     return $self;
 }
@@ -196,7 +195,7 @@ sub _setup_level {
     for my $level (keys %{ PRI() }) {
         my $is_active = PRI->{$level} <= PRI->{$self->{level}};
         no strict 'refs';
-        no warnings 'redefine'; ## no critic
+        no warnings 'redefine';
         *{$pkg.q{::}.$level} = $is_active ? \&{$pkg.q{::_}.$level} : sub {};
     }
     return;
@@ -332,8 +331,8 @@ EOCODE
 EOCODE
         # install generated method
         no strict 'refs';
-        no warnings 'redefine';             ## no critic
-        *{$pkg.'::_'.$level} = eval $code;  ## no critic
+        no warnings 'redefine';
+        *{$pkg.'::_'.$level} = eval $code;  ## no critic (ProhibitStringyEval)
     }
 
     return;
@@ -348,6 +347,11 @@ __END__
 =head1 NAME
 
 Log::Fast - Fast and flexible logger
+
+
+=head1 VERSION
+
+This document describes Log::Fast version v1.0.6
 
 
 =head1 SYNOPSIS
@@ -655,71 +659,63 @@ Calling log with single parameter is faster than with many parameters
 (because in second case sprintf() have to be used).
 
 
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-
 =head1 SUPPORT
 
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Log-Fast>.
-I will be notified, and then you'll automatically be notified of progress
-on your bug as I make changes.
+=head2 Bugs / Feature Requests
 
-You can also look for information at:
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/powerman/perl-Log-Fast/issues>.
+You will be notified automatically of any progress on your issue.
 
-=over 4
+=head2 Source Code
 
-=item * RT: CPAN's request tracker
+This is open source software. The code repository is available for
+public review and contribution under the terms of the license.
+Feel free to fork the repository and submit pull requests.
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Log-Fast>
+L<https://github.com/powerman/perl-Log-Fast>
+
+    git clone https://github.com/powerman/perl-Log-Fast.git
+
+=head2 Resources
+
+=over
+
+=item * MetaCPAN Search
+
+L<https://metacpan.org/search?q=Log-Fast>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/dist/Log-Fast>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
 L<http://annocpan.org/dist/Log-Fast>
 
-=item * CPAN Ratings
+=item * CPAN Testers Matrix
 
-L<http://cpanratings.perl.org/d/Log-Fast>
+L<http://matrix.cpantesters.org/?dist=Log-Fast>
 
-=item * Search CPAN
+=item * CPANTS: A CPAN Testing Service (Kwalitee)
 
-L<http://search.cpan.org/dist/Log-Fast/>
+L<http://cpants.cpanauthors.org/dist/Log-Fast>
 
 =back
 
 
 =head1 AUTHOR
 
-Alex Efros  C<< <powerman-asdf@ya.ru> >>
+Alex Efros E<lt>powerman@cpan.orgE<gt>
 
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2010,2012 Alex Efros <powerman-asdf@ya.ru>.
+This software is Copyright (c) 2010-2012 by Alex Efros E<lt>powerman@cpan.orgE<gt>.
 
-This program is distributed under the MIT (X11) License:
-L<http://www.opensource.org/licenses/mit-license.php>
+This is free software, licensed under:
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
+  The MIT (X11) License
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
+=cut

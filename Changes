@@ -1,28 +1,32 @@
 Revision history for Log-Fast
 
-1.0.6   Thu Oct  3 17:06:57 EEST 2013
-	Remove MYMETA.*
+{{$NEXT}}
+	- Switch to Dist::Milla.
 
-1.0.5	Tue May 22 04:50:09 EEST 2012
-	INCOMPATIBLE! fixed: level() and ident() now return
-	previous value instead of current.
+1.0.6   2013-10-03 17:06:57 EEST
+	- Remove MYMETA.*
 
-1.0.4	Sun May 13 06:01:33 EEST 2012
-	Fix requirements.
+1.0.5	2012-05-22 04:50:09 EEST
+	[INCOMPATIBLE]
+	- fixed: level() and ident() now return
+	  previous value instead of current.
 
-1.0.3	Fri Dec 03 14:39:54 EET 2010
-	fixed t/raise.t on platforms without AF_UNIX
-	fixed t/syslog.t for mday < 10
+1.0.4	2012-05-13 06:01:33 EEST
+	- Fix requirements.
 
-1.0.2	Thu Nov 18 21:38:24 EET 2010
-	use Sys::Syslog::_PATH_LOG() for default {path}
-	fixed t/raise.t on platforms without /dev/log
-	fixed t/syslog.t on Win
+1.0.3	2010-12-03 14:39:54 EET
+	- fixed t/raise.t on platforms without AF_UNIX
+	- fixed t/syslog.t for mday < 10
 
-1.0.1	Thu Nov 18 07:46:54 EET 2010
-	require perl 5.8
-	added t/syslog.t
+1.0.2	2010-11-18 21:38:24 EET
+	- use Sys::Syslog::_PATH_LOG() for default {path}
+	- fixed t/raise.t on platforms without /dev/log
+	- fixed t/syslog.t on Win
 
-1.0.0	Wed Nov 17 22:36:01 EET 2010
-	Initial release.
+1.0.1	2010-11-18 07:46:54 EET
+	- require perl 5.8
+	- added t/syslog.t
+
+1.0.0	2010-11-17 22:36:01 EET
+	- Initial release.
 
