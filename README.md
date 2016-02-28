@@ -74,79 +74,102 @@ and slower than [Log::Syslog::Fast](https://metacpan.org/pod/Log::Syslog::Fast) 
 
 # INTERFACE 
 
-- Log::Fast->global()
+## global
 
-    When called first time will create global log object using
-    [default options](#options) (you can reconfigure it using `config()` later).
+    $LOG = Log::Fast->global();
 
-    Global log object is useful if your application consists of several
-    independent modules which should share same logging options configured
-    outside of these modules. In this case all these modules should use
-    same `global()` log object instead of creating `new()` independent log
-    objects in each module.
+When called first time will create global log object using
+[default options](#options) (you can reconfigure it using `config()` later).
 
-    Return global log object.
+Global log object is useful if your application consists of several
+independent modules which should share same logging options configured
+outside of these modules. In this case all these modules should use
+same `global()` log object instead of creating `new()` independent log
+objects in each module.
 
-- Log::Fast->new( \[\\%opt\] )
+Return global log object.
 
-    Create new log object, configured using [defaults](#options) and
-    user-provided options, if any.
+## new
 
-    Return created log object.
+    $LOG = Log::Fast->new();
+    $LOG = Log::Fast->new( \%opt );
 
-- $LOG->config( \\%opt )
+Create new log object, configured using [defaults](#options) and
+user-provided options, if any.
 
-    Reconfigure log object. Any options (see ["OPTIONS"](#options)) can be changed at
-    any time, including changing output **{type}** or setting options useless
-    with current output type (new values for these options will be used later,
-    if output type will be changed).
+Return created log object.
 
-    If you need to change only log **{level}** or syslog's **{ident}** you should use
-    `level()` or `ident()` methods because they are much faster than more general
-    `config()`.
+## config
 
-    Return nothing. Throw exception if unable to connect to syslog.
+    $LOG->config( \%opt );
 
-- $LOG->level( \[$level\] )
+Reconfigure log object. Any options (see ["OPTIONS"](#options)) can be changed at
+any time, including changing output **{type}** or setting options useless
+with current output type (new values for these options will be used later,
+if output type will be changed).
 
-    If **$level** given will change current log level.
-    This is same as call `config({ level=>$level })` but much faster.
+If you need to change only log **{level}** or syslog's **{ident}** you should use
+`level()` or `ident()` methods because they are much faster than more general
+`config()`.
 
-    Return previous log level.
+Return nothing. Throw exception if unable to connect to syslog.
 
-- $LOG->ident( \[$ident\] )
+## level
 
-    If **$ident** given will change current syslog's ident.
-    This is same as call `config({ ident=>$ident })` but much faster.
+    $level = $LOG->level();
+    $level = $LOG->level( $new_level );
 
-    Return previous syslog's ident.
+If **$new\_level** given will change current log level.
+This is same as call `config({ level=>$new_level })` but much faster.
 
-- $LOG->ERR( $message )
-- $LOG->ERR( $format, @list )
-- $LOG->WARN( $message )
-- $LOG->WARN( $format, @list )
-- $LOG->NOTICE( $message )
-- $LOG->NOTICE( $format, @list )
-- $LOG->INFO( $message )
-- $LOG->INFO( $format, @list )
-- $LOG->DEBUG( $message )
-- $LOG->DEBUG( $format, @list )
+Return previous log level.
 
-    Output **$message** to log using different log levels.
+## ident
 
-    If **$format, @list** used instead of **$message**, then use
-    `sprintf($format, @list)` to calculate log message.
+    $ident = $LOG->ident();
+    $ident = $LOG->ident( $new_ident );
 
-    If **@list** will contain CODEREF, they will be called (in LIST context)
-    and returned values will be placed inside **@list** inplace of CODEREF.
-    This can be used to avoid calculating log message (or it part) on disabled
-    log levels - these CODEREFs will be executed only on enabled log levels.
-    Example available in ["SYNOPSIS"](#synopsis).
+If **$new\_ident** given will change current syslog's ident.
+This is same as call `config({ ident=>$new_ident })` but much faster.
 
-    If **$message** or items in **@list** will be Unicode strings, they will be
-    converted to UTF8 before sending to log.
+Return previous syslog's ident.
 
-    Return nothing. Throw exception if fail to write message to log.
+## ERR
+
+## WARN
+
+## NOTICE
+
+## INFO
+
+## DEBUG
+
+    $LOG->ERR( $message )
+    $LOG->ERR( $format, @list )
+    $LOG->WARN( $message )
+    $LOG->WARN( $format, @list )
+    $LOG->NOTICE( $message )
+    $LOG->NOTICE( $format, @list )
+    $LOG->INFO( $message )
+    $LOG->INFO( $format, @list )
+    $LOG->DEBUG( $message )
+    $LOG->DEBUG( $format, @list )
+
+Output **$message** to log using different log levels.
+
+If **$format, @list** used instead of **$message**, then use
+`sprintf($format, @list)` to calculate log message.
+
+If **@list** will contain CODEREF, they will be called (in LIST context)
+and returned values will be placed inside **@list** inplace of CODEREF.
+This can be used to avoid calculating log message (or it part) on disabled
+log levels - these CODEREFs will be executed only on enabled log levels.
+Example available in ["SYNOPSIS"](#synopsis).
+
+If **$message** or items in **@list** will be Unicode strings, they will be
+converted to UTF8 before sending to log.
+
+Return nothing. Throw exception if fail to write message to log.
 
 # OPTIONS
 
@@ -312,7 +335,7 @@ Alex Efros &lt;powerman@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010-2012 by Alex Efros &lt;powerman@cpan.org>.
+This software is Copyright (c) 2010- by Alex Efros &lt;powerman@cpan.org>.
 
 This is free software, licensed under:
 

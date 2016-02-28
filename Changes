@@ -1,6 +1,7 @@
 Revision history for Log-Fast
 
 {{$NEXT}}
+	- Reformat doc.
 
 v2.0.0  2016-02-17 22:34:31 EET
 	- Switch to Dist::Milla.
