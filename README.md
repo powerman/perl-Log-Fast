@@ -7,7 +7,7 @@ Log::Fast - Fast and flexible logger
 
 # VERSION
 
-This document describes Log::Fast version v2.0.0
+This document describes Log::Fast version v2.0.1
 
 # SYNOPSIS
 
@@ -163,7 +163,7 @@ If **$format, @list** used instead of **$message**, then use
 If **@list** will contain CODEREF, they will be called (in LIST context)
 and returned values will be placed inside **@list** inplace of CODEREF.
 This can be used to avoid calculating log message (or it part) on disabled
-log levels - these CODEREFs will be executed only on enabled log levels.
+log levels - these CODEREF will be executed only on enabled log levels.
 Example available in ["SYNOPSIS"](#synopsis).
 
 If **$message** or items in **@list** will be Unicode strings, they will be
@@ -230,7 +230,7 @@ Defaults for all options are:
     filehandle (like `\*STDERR`).
 
     When **{type}** set to `'unix'` you have to also set **{path}** to path to
-    existing unix socket (typically it's `'/dev/log'`).
+    existing UNIX socket (typically it's `'/dev/log'`).
 
     Luckily, default values for both **{fh}** and **{path}** are already provided,
     so usually it's enough to just set **{type}**.
@@ -331,11 +331,11 @@ Feel free to fork the repository and submit pull requests.
 
 # AUTHOR
 
-Alex Efros &lt;powerman@cpan.org>
+Alex Efros <powerman@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010- by Alex Efros &lt;powerman@cpan.org>.
+This software is Copyright (c) 2010- by Alex Efros <powerman@cpan.org>.
 
 This is free software, licensed under:
 

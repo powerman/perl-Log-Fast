@@ -32,7 +32,7 @@ use strict;
 use utf8;
 use Carp;
 
-our $VERSION = 'v2.0.0';
+our $VERSION = 'v2.0.1';
 
 use Scalar::Util qw( refaddr );
 use Socket;
@@ -351,7 +351,7 @@ Log::Fast - Fast and flexible logger
 
 =head1 VERSION
 
-This document describes Log::Fast version v2.0.0
+This document describes Log::Fast version v2.0.1
 
 
 =head1 SYNOPSIS
