@@ -519,7 +519,7 @@ C<sprintf($format, @list)> to calculate log message.
 If B<@list> will contain CODEREF, they will be called (in LIST context)
 and returned values will be placed inside B<@list> inplace of CODEREF.
 This can be used to avoid calculating log message (or it part) on disabled
-log levels - these CODEREFs will be executed only on enabled log levels.
+log levels - these CODEREF will be executed only on enabled log levels.
 Example available in L</SYNOPSIS>.
 
 If B<$message> or items in B<@list> will be Unicode strings, they will be
@@ -592,7 +592,7 @@ When B<{type}> set to C<'fh'> you have to also set B<{fh}> to any open
 filehandle (like C<\*STDERR>).
 
 When B<{type}> set to C<'unix'> you have to also set B<{path}> to path to
-existing unix socket (typically it's C<'/dev/log'>).
+existing UNIX socket (typically it's C<'/dev/log'>).
 
 Luckily, default values for both B<{fh}> and B<{path}> are already provided,
 so usually it's enough to just set B<{type}>.
